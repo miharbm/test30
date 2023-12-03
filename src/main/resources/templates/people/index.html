@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="users" style="padding-bottom: 20px">
+        <div class="user"  th:each="user : ${users}">
+            <a th:href="@{/people/{id}(id=${user.getId()})}"
+               th:text="${user.getId() + '. ' + user.getName() + ' ' + user.getLastName()}"
+            >user</a>
+        </div>
+    </div>
+
+    <a class="glow-on-hover new_user" style="height: 24px" href="/people/new">Create new person</a>
+</div>
+
+<!--<link rel="stylesheet"  href="/resources/css/styles.css" />-->
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New person</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<div class="container">
+    <a class="glow-on-hover" style="margin: 0 0 40px 150px; padding: 3px 10px;width: 300px" th:href="@{/people}">Вернуться ко всем пользователям</a>
+
+    <form class="form" style="margin-top: 30px" th:method="POST" th:action="@{/people}" th:object="${person}">
+        <div class="form-item">
+            <label class="form-label" for="name">Enter name: </label>
+            <input class="form-input" type="text" th:field="*{name}" id="name"/>
+            <div style="color:red" th:if="${#fields.hasErrors()}" th:errors="*{name}">Name Error</div>
+        </div>
+
+        <div class="form-item">
+            <label class="form-label" for="lastname">Enter last name: </label>
+            <input class="form-input" type="text" th:field="*{lastname}" id="lastname"/>
+            <div style="color:red" th:if="${#fields.hasErrors()}" th:errors="*{lastname}">Name Error</div>
+        </div>
+
+        <div class="form-item">
+            <label class="form-label" for="age">Enter date of birth</label>
+            <input class="form-input" type="text" th:field="*{dateOfBirth}" id="age"/>
+            <div style="color:red" th:if="${#fields.hasErrors()}" th:errors="*{dateOfBirth}">Date of birth error</div>
+        </div>
+
+        <div class="form-item">
+            <label class="form-label" for="email">Enter email: </label>
+            <input class="form-input" type="email" th:field="*{email}" id="email"/>
+            <div style="color: red" th:if="${#fields.hasErrors()}" th:errors="*{email}">Email error</div>
+        </div>
+
+        <div class="form-item">
+            <label class="form-label" for="address">Enter address: </label>
+            <input class="form-input" type="text" th:field="*{address}" id="address"/>
+            <div style="color: red" th:if="${#fields.hasErrors()}" th:errors="*{address}">Address Error</div>
+        </div>
+
+        <input class="glow-on-hover form-btn" type="submit" value="Create"/>
+
+    </form>
+</div>
+
+</body>
+</html>

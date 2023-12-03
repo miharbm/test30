@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <div class="container">
+        <a class="glow-on-hover" style="margin-bottom: 30px; padding: 3px 10px; width: 300px" th:href="@{/people}">Вернуться ко всем пользователям</a>
+
+        <div class="info" >
+            <div class="info-item" th:text="${person.getName() + ' ' + person.getLastName() }">VALUE</div>
+            <div class="info-item" th:text="${person.getDateOfBirth() }">VALUE</div>
+            <div class="info-item" th:text="${'Email: ' + person.getEmail()}">VALUE</div>
+            <div class="info-item" th:text="${'id = ' + person.getId()}">VALUE</div>
+            <div class="info-item" th:text="${'Адрес: ' + person.getAddress()}">VALUE</div>
+        </div>
+
+        <form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
+            <input class="glow-on-hover"  type="submit" value="Edit">
+        </form>
+
+        <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+            <input class="glow-on-hover" type="submit" value="Delete">
+        </form>
+    </div>
+</body>
+</html>
